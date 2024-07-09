@@ -1,0 +1,26 @@
+.dialog {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
+  }
+  .count, .total {
+    color: #007bff;
+    font-weight: bold;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  .confirm {
+    background-color: #28a745;
+    color: white;
+  }
+  .cancel {
+    background-color: #dc3545;
+    color: white;
+  }

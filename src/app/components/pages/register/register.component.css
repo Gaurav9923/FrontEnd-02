@@ -1,0 +1,44 @@
+
+    
+    h1 {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-bottom: 20px;
+    
+    }
+    
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    
+    input[type="email"],
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      margin-bottom: 5px;
+    }
+    
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    
+    
+    .validator{
+      color: red;
+    }

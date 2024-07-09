@@ -1,0 +1,42 @@
+<!-- upcoming movies Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="text-primary mb-3"><span class="fw-light text-dark">Search</span> Result</h1>
+            <p class="mb-5">Find your next movie night pick with our curated collections.Join us for a cinematic journey that you'll never forget.</p>
+        </div>
+        <div class="row g-4">
+
+            @for (item of searchMovieList; track $index) {
+                <!-- below div of 1 card -->
+           <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+               <div class="product-item text-center border h-100 p-4">
+                   <img class="img-fluid mb-4" src={{item.movieImage}} alt="" style="height: 343px; width:220px;">
+                   <!-- <div class="mb-2">
+                       <small class="fa fa-star text-primary"></small>
+                       <small class="fa fa-star text-primary"></small>
+                       <small class="fa fa-star text-primary"></small>
+                       <small class="fa fa-star text-primary"></small>
+                       <small class="fa fa-star text-primary"></small>
+                       <small>(99)</small>
+                   </div> -->
+                   <a href="" class="h6 d-inline-block mb-2">{{item.movieName}}</a>
+                   <h5 class="text-primary mb-3">{{item.genre}}</h5>
+                   <div >
+
+                       <button [routerLink]="['/movieDetails',item.movieId]"   class="btn btn-outline-primary px-3">Details</button>
+                   </div>
+               </div>
+           </div>
+        }
+
+
+
+           
+           
+        </div>
+    </div>
+</div>
+<!-- upcoming movies End -->
+
+<app-footer></app-footer>

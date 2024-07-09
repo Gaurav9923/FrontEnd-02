@@ -1,0 +1,15 @@
+services:
+  front-end-02-app:
+    container_name: front-end-02-container
+    build: .
+    image: front-end-02-app:v1
+    ports:
+      - 4200:80
+    expose:
+      - 80
+    networks:
+      - spring-network
+
+networks:
+   spring-network:
+      driver: bridge

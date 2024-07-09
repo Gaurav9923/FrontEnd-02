@@ -1,0 +1,20 @@
+<div class="movie-details-container">
+  <div id="movie-details">
+    <div class="card" style="height: 50%;">
+      <img
+        class="card-image"
+        src="{{ currentMovie.movieImage }}"
+        style="height: 100%; width: 100%"
+        alt="movieName"
+      />
+    </div>
+    <div class="card" style="height: 50%;">
+      <div class="card-content" style="height: 100%;">
+        <h5 class="card-title">{{ currentMovie.movieName }}</h5>
+        <p class="card-description">{{ currentMovie.description }}</p>
+        <p class="card-genre">Genre: {{ currentMovie.genre }}</p>
+        <p class="card-id">Movie Id: {{ currentMovie.movieId }}</p>
+      </div>
+    </div>
+  </div>
+</div>

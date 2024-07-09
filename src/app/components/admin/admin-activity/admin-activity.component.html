@@ -1,0 +1,336 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card"  style="position: fixed;" >
+          <div class="card-header">
+            <h5 class="card-title">Admin Profile</h5>
+          </div>
+          <div class="card-body">
+            <button
+              class="btn btn-primary"
+              (click)="handleFormSwitch('movie')"
+              (click)="handleUserList('add movie')"
+            >
+              Add Movie
+            </button>
+            <br /><br />
+            <button
+              class="btn btn-primary"
+              (click)="handleFormSwitch('auditorium')"
+              (click)="handleUserList('add audirotium')"
+            >
+              Add Auditorium
+            </button>
+            <br /><br />
+            <button
+              class="btn btn-primary"
+              (click)="handleFormSwitch('usersList')"
+              (click)="handleUserList('user List')"
+            >
+              Users List
+            </button>
+            <br /><br />
+            <button
+              class="btn btn-primary"
+              (click)="handleFormSwitch('moviesList')"
+              (click)="handleUserList('movie List')"
+            >
+              Movies List
+            </button>
+            <br /><br />
+            <button
+              class="btn btn-primary"
+              (click)="handleFormSwitch('auditoriumList')"
+              (click)="handleUserList('auditoriumList')"
+            >
+              Auditorium List
+            </button>
+            <br /><br />
+            <button
+              class="btn btn-primary"
+              (click)="handleFormSwitch('setScreening')"
+              (click)="handleUserList('setScreening')"
+            >
+              SET SCREENINGS
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card" *ngIf="activeForm === 'movie'">
+          <div class="card-header">
+            <h5 class="card-title">Movie Form</h5>
+          </div>
+          <div class="card-body">
+            <form  [formGroup]="addMovieForm">
+              <div class="form-group">
+                <label for="movieName">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="movieName"
+                  name="movieName"
+                  formControlName="movieName"
+                 
+                />
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  rows="3"
+                  formControlName="description"
+                  
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="genre"
+                    name="genre"
+                    formControlName="genre"
+                 
+                />
+              </div>
+              <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="imageUrl"
+                  name="imageUrl"
+                  formControlName="imageUrl"
+                 
+                />
+              </div>
+              <button type="submit" class="btn btn-primary"  (click)="addMovie()">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="card" *ngIf="activeForm === 'auditorium'">
+          <div class="card-header">
+            <h5 class="card-title">Auditorium Form</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="addAuditoriumForm">
+              <div class="form-group">
+                <label for="auditoriumName">Auditorium Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="auditoriumName"
+                  name="auditoriumName"
+                  formControlName="auditoriumName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="auditoriumCapacity">Capacity</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="auditoriumCapacity"
+                  name="auditoriumCapacity"
+                  formControlName="auditoriumCapacity"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="addAuditorium()">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="card" *ngIf="activeForm === 'usersList'">
+          <div class="card-header">
+            <h5 class="card-title">USERS LIST</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>User Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Mobile Number</th>
+                    <th>Date of Birth</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let userObj of usersList">
+                    <td>{{ userObj.userId }}</td>
+                    <td>{{ userObj.usersName }}</td>
+                    <td>{{ userObj.userEmailId }}</td>
+                    <td>{{ userObj.userGender }}</td>
+                    <td>{{ userObj.userMobNo }}</td>
+                    <td>{{ userObj.userDateOfBirth | date :"mediumDate" }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngIf="activeForm === 'moviesList'">
+          <div class="card-header">
+            <h5 class="card-title">MOVIES LIST</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Movie Id</th>
+                    <th>Movie Name</th>
+                    <th>Description</th>
+                    <th>Genre</th>
+                    <th>Movie Image</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let movieObj of movieList">
+                    <td>{{ movieObj.movieId }}</td>
+                    <td>{{ movieObj.movieName }}</td>
+                    <td>{{ movieObj.description }}</td>
+                    <td>{{ movieObj.genre }}</td>
+                    <td>
+                      <img
+                        [src]="movieObj.movieImage"
+                        alt="{{ movieObj.movieName }}"
+                        style="width: 30%"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card" *ngIf="activeForm === 'auditoriumList'">
+          <div class="card-header">
+            <h5 class="card-title">AUDITORIUM LIST</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Auditorium Id</th>
+                    <th>Auditorium Name</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Capacity: 50, audId: 1, available: 32, Booked: 18 -->
+                  <tr *ngFor="let auditObj of auditoriumList">
+                    <td>{{ auditObj.auditoriumId }}</td>
+                    <td>{{ auditObj.auditoriumName }}</td>
+                   
+                    <!-- <td>{{ auditObj.number_of_seats }}</td>
+                    <td>{{ auditObj.booked_seats }}</td>
+                    <td>{{ auditObj.available_seats }}</td> -->
+
+          
+                    <td 
+                      (dblclick)="handleSeatAvailibilityList(auditObj.auditoriumId)"
+                      [ngClass]="{
+                        'text-success': auditObj.auditoriumId === availMap?.audId && availMap?.available > 0,
+                        'text-danger': auditObj.auditoriumId === availMap?.audId && availMap?.available === 0
+                      }"
+                    >
+                      Double Click To Check Availability
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+                  
+            </div>
+            <div>
+              <!-- Capacity: 50, audId: 1, available: 32, Booked: 18 -->
+              <p style="font-weight: bold;">Auditorium Details:</p>
+              <p>Capacity : {{availMap.Capacity}}</p>
+              <p>Booked : {{availMap.Booked}}</p>
+              <p>Available : {{availMap.available}}</p>
+             
+
+        </div>
+          </div>
+        </div>
+        <div class="card" *ngIf="activeForm === 'setScreening'">
+          <div class="card-header">
+            <h5 class="card-title">SET SCREENING</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Screening Id</th>
+                    <th>Movie Name</th>
+                    <th>Auditorium Name</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- <tr *ngFor="let screeningObj of screeningList">
+                    <td>{{ screeningObj.screeningId }}</td>
+                    <td>{{ screeningObj.movieFk.movieName }}</td>
+                    <td>{{ screeningObj.auditoriumFk.auditoriumName }}</td>
+                    <td>
+                      <button
+                        class="btn btn-primary"
+                        (click)="handleClickOpen(screeningObj)"
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  </tr> -->
+                  @if (screeningList.length==auditoriumList.length) {
+
+                    @for (screeningObj of screeningList; track $index) {
+                      <tr>
+                        <td>{{ screeningObj.screeningId }}</td>
+                        <td>{{ screeningObj.movieFk.movieName }}</td>
+                        <td>{{ screeningObj.auditorumFk.auditoriumName }}</td>
+                        <td>
+                          <button
+                            class="btn btn-primary"
+                            (click)="handleClickOpen(screeningObj)"
+                          >
+                            Edit
+                          </button>
+                        </td>
+                      </tr>
+                    }
+                  }
+                  @else {
+                    @for (auditoriumObj of auditoriumList; track $index) {
+                      <tr>
+                        <td>{{$index }}</td>
+                        <td>{{ "USE DATABASE" }}</td>
+                        <td>{{ auditoriumObj.auditoriumName }}</td>
+                        <td>
+                          <button
+                            class="btn btn-primary"
+                            (click)="handleClickOpen(null)"
+                          >
+                            Edit
+                          </button>
+                        </td>
+                      </tr>
+                    }
+                  }
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->

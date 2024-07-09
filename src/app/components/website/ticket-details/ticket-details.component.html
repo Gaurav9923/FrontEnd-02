@@ -1,0 +1,83 @@
+<div class="ticket-details-container" style="background-color: hsl(0, 0%, 98%); padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.15);">
+    <div class="ticket-details-header" style="text-align: center;">
+        <h2 style="color: #333; font-size: 24px;">Ticket Details</h2>
+        <button style="background-color: #4CAF50; 
+        color: #fff; 
+        border: none; 
+        border-radius: 5px; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: background-color 0.3s ease;"
+         [hidden]="tickets.length === 0"
+  (click)="printTicket()">Print Ticket</button>
+    </div>
+    <div class="ticket-details-content">
+        <div class="ticket-details-row" *ngFor="let ticket of tickets" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div class="ticket-details-col" style="flex: 1; padding: 10px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <div class="ticket-details-label" style="font-weight: bold; color: #555;">Auditorium:</div>
+                <div class="ticket-details-value">{{ ticket.screeningFk.auditorumFk.auditoriumName }}</div>
+            </div>
+            <div class="ticket-details-col" style="flex: 1; padding: 10px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <div class="ticket-details-label" style="font-weight: bold; color: #555;">Movie:</div>
+                <div class="ticket-details-value">{{ ticket.screeningFk.movieFk.movieName }}</div>
+            </div>
+            <div class="ticket-details-col" style="flex: 1; padding: 10px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <div class="ticket-details-label" style="font-weight: bold; color: #555;">Genre:</div>
+                <div class="ticket-details-value">{{ ticket.screeningFk.movieFk.genre }}</div>
+            </div>
+            <div class="ticket-details-col" style="flex: 1; padding: 10px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <div class="ticket-details-label" style="font-weight: bold; color: #555;">ReservationId:</div>
+                <div class="ticket-details-value">{{ ticket.reservedSeatId }}</div>
+            </div>
+            <div class="ticket-details-col" style="flex: 1; padding: 10px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <div class="ticket-details-label" style="font-weight: bold; color: #555;">Seat Number:</div>
+                <div class="ticket-details-value">{{ ticket.seatFk.seatNumber }}</div>
+            </div>
+            <div class="ticket-details-col" style="flex: 1; padding: 10px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                <button  style="background-color: #E74C3C; 
+                color: #fff; 
+                border: none; 
+                border-radius: 5px; 
+                padding: 10px 20px; 
+                font-size: 16px; 
+                font-weight: bold; 
+                cursor: pointer; 
+                transition: background-color 0.3s ease;"
+             
+              class="btn btn-outline-primary px-3"  (click)="cancelSeatBooking(ticket.reservedSeatId)"
+              >Cancel Seat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="invoice-container" id="content" #content style="width: 800px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <div class="header" style="background-color: #f0f0f0; padding: 10px; border-bottom: 1px solid #ddd;">
+      <h1 style="font-size: 24px; margin-bottom: 10px;">Invoice</h1>
+      <p style="font-size: 16px; color: #666;">Reservation ID: {{ reservarionObj.reservationId }}</p>
+    </div>
+    <div class="customer-info" style="padding: 20px;">
+      <h2 style="font-size: 18px; margin-bottom: 10px;">Customer Information</h2>
+      <p style="font-size: 16px; margin-bottom: 10px;">Name: {{ reservarionObj.userFk.usersName }}</p>
+      <p style="font-size: 16px; margin-bottom: 10px;">Mobile Number: {{ reservarionObj.userFk.userMobNo }}</p>
+      <p style="font-size: 16px; margin-bottom: 10px;">Email ID: {{ reservarionObj.userFk.userEmailId }}</p>
+    </div>
+    <div class="seat-info" style="padding: 20px;">
+      <h2 style="font-size: 18px; margin-bottom: 10px;">Seat Information</h2>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li *ngFor="let ticket of tickets" style="margin-bottom: 20px;">
+          <p style="font-size: 16px; margin-bottom: 10px;">Seat Number: {{ ticket.seatFk.seatNumber }}</p>
+          <p style="font-size: 16px; margin-bottom: 10px;">Auditorium: {{ ticket.seatFk.auditoriumFk.auditoriumName }}</p>
+          <p style="font-size: 16px; margin-bottom: 10px;">Movie: {{ ticket.screeningFk.movieFk.movieName }}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="total" style="padding: 20px; border-top: 1px solid #ddd;">
+      <h2 style="font-size: 18px; margin-bottom: 10px;">Total</h2>
+      <p style="font-size: 16px; margin-bottom: 10px;">Number of Seats: {{ bookingArray.length }}</p>
+      <p style="font-size: 16px; margin-bottom: 10px;">Total Amount: {{ totalAmount }}</p>
+    </div>
+  </div>
+<app-footer></app-footer>

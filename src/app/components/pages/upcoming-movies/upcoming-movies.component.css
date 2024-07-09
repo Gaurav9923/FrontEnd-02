@@ -1,0 +1,16 @@
+
+/*** all movies css ***/
+.product-item {
+    transition: .1s;
+}
+
+.product-item:hover {
+    border-width: 0 !important;
+    box-shadow: 0 0 35px rgba(144, 188, 121, .25);
+}
+
+.product-item:hover a.btn {
+    color: var(--bs-white);
+    background: var(--bs-primary);
+}
+

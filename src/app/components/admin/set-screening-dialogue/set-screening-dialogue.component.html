@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Auditorium name:</h2>
+    <h6>{{this.selectedScreening.movieFk.movieName}}</h6>
+
+    <h3>Select your preferred name from the list:</h3>
+    <select [(ngModel)]="selectedMovieItem">
+        @for (movieObj of movieList; track $index) {
+            <option [value]='$index'> {{movieObj.movieName}}</option>
+        }
+        
+    </select>
+
+    <div class="button-container">
+        <button id="cancel" (click)="closeDialogue()">Cancel</button>
+        <button id="submit" (click)="movieTOSetInAuditorium()">Submit</button>
+    </div>
+</div>

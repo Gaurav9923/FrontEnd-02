@@ -1,0 +1,42 @@
+
+<h1 > Register</h1>    
+
+<div mat-dialog-content >
+            <form   [formGroup]="registeratinForm">
+              <label for="user">User Name</label>
+              <input type="text"  id="username" name="username" formControlName="username" required>
+              @if ((registeratinForm.controls['username'].invalid) && (registeratinForm.controls['username'].dirty || registeratinForm.controls['username'].touched)) {
+                @if (registeratinForm.controls['username'].errors?.['required']) {
+                  <span class="validator" style="margin-top: 0cm;">required field!</span>
+                }
+               
+              }
+
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" formControlName="email" required>
+              @if ((registeratinForm.controls['email'].invalid) && (registeratinForm.controls['email'].dirty || registeratinForm.controls['email'].touched)) {
+                @if (registeratinForm.controls['email'].errors?.['required']) {
+                  <span class="validator" style="margin-top: 0cm;">required field!</span>
+                }
+                @if (registeratinForm.controls['email'].errors?.['email']) {
+                  <span class="validator" style="margin-top: 0cm;">provide proper email!</span>
+                }
+              }
+        
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" formControlName="password" required>
+              @if ((registeratinForm.controls['password'].invalid) && (registeratinForm.controls['password'].dirty || registeratinForm.controls['email'].touched)) {
+                @if (registeratinForm.controls['password'].errors?.['required']) {
+                  <span class="validator" style="margin-top: 0cm;">required field!</span>
+                }
+                @if (registeratinForm.controls['password'].errors?.['minLength']) {
+                  <span class="validator" style="margin-top: 0cm;">minLength 3!</span>
+                }
+              }
+        
+              <button type="submit" (click)="onRegister()">Register</button>
+            </form>
+           
+         
+ </div>
+   

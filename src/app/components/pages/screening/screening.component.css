@@ -1,0 +1,25 @@
+.marq{
+         text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
+       border-radius: 10px; font-size: 20px; 
+       font-weight: bold;
+}
+/*** Product ***/
+.product-item {
+    transition: .1s;
+}
+
+.product-item:hover {
+    border-width: 0 !important;
+    box-shadow: 0 0 35px rgba(144, 188, 121, .25);
+}
+
+.product-item:hover a.btn {
+    color: var(--bs-white);
+    background: var(--bs-primary);
+}
+
+/* .screen-div{
+    margin-left: 20%;
+    margin-right: auto;
+} */

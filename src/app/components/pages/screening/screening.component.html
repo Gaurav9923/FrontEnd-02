@@ -1,0 +1,68 @@
+<marquee width="100%" direction="left" class="marq" >
+  "Experience the Magic of Cinema in Angular."
+
+  "Your One-Stop Destination for Movie Lovers"
+
+  "Discover the Joy of Watching Movies in Angular"
+</marquee>
+<app-banner></app-banner>
+
+<!-- Product Start -->
+<div class="container-fluid py-5">
+  <div class="container">
+    <div
+      class="mx-auto text-center wow fadeIn"
+      data-wow-delay="0.1s"
+      style="max-width: 400px"
+    >
+      <h1 class="text-primary mb-3">
+        <span class="fw-light text-dark">Our Ongoing Shows</span> Book Now
+      </h1>
+      <p class="mb-5">
+        From blockbusters to indies, we have the perfect movie for you.
+        Find your next movie night pick with our curated collections.
+      </p>
+    </div>
+    <div class="screen-div">
+      <div class="row g-4 text-center">
+        <!-- src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kingdom-of-the-planet-of-the-apes-et00374973-1699000754.jpg" -->
+        @for (item of screeningList; track $index) {
+        <!-- below div of 1 card -->
+        <div class="col-lg-4 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+          <div class="product-item text-center border h-100 p-4">
+            <img
+              class="img-fluid mb-4"
+              style="height: 343px; width: 220px"
+              src="{{ item.movieFk.movieImage }}"
+              alt=""
+            />
+            <div class="mb-2">
+              <div class="h6 d-inline-block mb-2">
+                {{ item.movieFk.movieName }}
+              </div>
+              <h5 class="text-primary mb-3">{{ item.movieFk.genre }}</h5>
+            </div>
+
+            <a
+              [routerLink]="['/bookNow', item.auditorumFk.auditoriumId]"
+              class="btn btn-outline-primary px-3"
+              >Book Now</a
+            >
+          </div>
+        </div>
+
+        }
+
+        <div class="col-12 text-center">
+          <a
+            class="btn btn-primary py-2 px-4"
+            [routerLink]="['/allUpcomingMovies']"
+            >Upcoming Movies</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Product End -->
+<app-footer></app-footer>

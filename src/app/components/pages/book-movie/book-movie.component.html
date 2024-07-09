@@ -1,0 +1,21 @@
+
+<div style="text-align: center;">
+
+    <h3 class="card-title">Movie Details</h3>
+</div>
+<div class="container" >
+    <div class="card">
+        <img src={{this.currentScreen?.movieFk?.movieImage}} style="height: 100%;width: 100%;" alt="Movie poster">
+        <div class="card-content">
+            <h5 class="card-title">{{currentScreen?.movieFk?.movieName}}</h5>
+            <p class="card-description">{{currentScreen?.movieFk?.description}}</p>
+            <p class="card-genre">Genre: Action</p>
+        </div>
+    </div>
+    <div class="auditorium-details">
+        <h5>Auditorium Details</h5>
+        <p class="auditorium-name">{{currentScreen?.auditorumFk?.auditoriumName}}</p>
+        <p class="number-of-seats">Total Seats: {{currentScreen?.auditorumFk?.number_of_seat}}</p>
+        <button class="btn btn-outline-primary px-3"   (click)="openDialogue()">Book Now</button>
+    </div>
+</div>

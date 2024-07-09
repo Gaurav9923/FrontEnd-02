@@ -1,0 +1,126 @@
+<div class="header_section">
+   <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+
+         <!-- no one log in -->
+            @if (!authsrv.isLoggedIn()) {
+     <!-- image icon  -->
+          <a class="navbar-brand"href="index.html">
+            <img src="./assets/images/movies.png"  style="width: 37%; height: 37%">
+         </a>
+       
+      
+   <!-- search field -->
+         <mat-form-field
+         floatLabel="auto" style="margin-bottom: -2cap; color:wheat; ;">
+         <!-- <input matInput placeholder="Search" > -->
+         <input  matInput type="text" [(ngModel)]="searchString"  placeholder="search movie.."  (change)="searchProducts()">
+        </mat-form-field>
+        
+
+         <!-- home | about us |Login |Logout -->
+              <ul class="navbar-nav ml-auto"  >
+               <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/']" >Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/aboutUs']">About Us</a>
+               </li>
+            
+               <li class="nav-item">
+                 <a class="nav-link"   (click)="openDialogue()">Login</a>
+                  
+               </li>
+              
+              
+            </ul>
+            }
+
+       <!-- user logged in -->
+            @if (authsrv.isLoggedIn() && !authsrv.isAdmin() ) {
+               <!-- image icon  -->
+               <a class="navbar-brand"href="index.html">
+                  <img src="./assets/images/movies.png"  style="width: 37%; height: 37%">
+               </a>
+                
+            
+      <!-- search field -->
+      <mat-form-field
+      floatLabel="auto" style="margin-bottom: -2cap; color:wheat; ;">
+      <!-- <input matInput placeholder="Search" > -->
+      <input  matInput type="text" [(ngModel)]="searchString"  placeholder="search movie.."  (change)="searchProducts()">
+     </mat-form-field>
+        
+
+
+               <ul class="navbar-nav ml-auto"  >
+                  <li class="nav-item">
+                     <a class="nav-link" [routerLink]="['/']" >Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" [routerLink]="['/aboutUs']">About Us</a>
+                  </li>
+               
+                <li class="nav-item">
+                   <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link"  [routerLink]="['/booking']">Booking</a>
+                </li>
+             
+                <li class="nav-item">
+                   <a class="nav-link" (click)="signOut()" [routerLink]="['/']">Logout</a>
+                </li>
+               
+               </ul>
+
+
+            }
+         <!-- admin logged in -->
+            @if (authsrv.isLoggedIn() && authsrv.isAdmin()) {
+                 <!-- image icon  -->
+                 <a class="navbar-brand"href="index.html">
+                  <img src="./assets/images/movies.png"  style="width: 37%; height: 37%">
+               </a>
+               
+            
+      <!-- search field -->
+      <mat-form-field
+      floatLabel="auto" style="margin-bottom: -2cap; color:wheat; ;">
+      <!-- <input matInput placeholder="Search" > -->
+      <input  matInput type="text" [(ngModel)]="searchString"  placeholder="search movie.."  (change)="searchProducts()">
+     </mat-form-field>
+
+               <ul class="navbar-nav ml-auto"  >  
+                  <li class="nav-item">
+                  
+                     <a class="nav-link" [routerLink]="['/']" >Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" [routerLink]="['/aboutUs']" >About Us</a>
+                  </li>               
+                  
+                  <li class="nav-item">
+                     <a class="nav-link" [routerLink]="['/adminActivity']">ADMIN</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" (click)="signOut()" [routerLink]="['/']">Logout</a>
+                  </li>
+                 
+               </ul>
+
+
+            }     
+         
+         
+            
+          
+            
+            
+             <form class="form-inline my-2 my-lg-0">
+             </form>
+        
+      </nav>
+   </div>
+</div>

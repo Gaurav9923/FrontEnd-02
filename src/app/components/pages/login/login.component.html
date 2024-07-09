@@ -1,0 +1,42 @@
+
+
+<h1 > Sign in</h1>    
+
+<div mat-dialog-content >
+            <form  [formGroup]="loginForm">
+              <label for="email">Email</label>
+              <!-- <input type="email" [(ngModel)]="loginObj.email" id="email" name="email" required> -->
+              <input type="email" formControlName="email" id="email" name="email" required>
+             
+                @if ((loginForm.controls['email'].invalid) && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)) {
+                  @if (loginForm.controls['email'].errors?.['required']) {
+                    <span class="validator" style="margin-top: 0cm;">required field!</span>
+                  }
+                  @if (loginForm.controls['email'].errors?.['email']) {
+                    <span class="validator" style="margin-top: 0cm;">provide proper email!</span>
+                  }
+                }
+                
+              
+        
+              <label for="password">Password</label>
+              <!-- <input type="password" [(ngModel)]="loginObj.password" id="password" name="password" required> -->
+              <input type="password" formControlName="password" id="password" name="password" required>
+             
+                @if ((loginForm.controls['password'].invalid) && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)) {
+                  @if (loginForm.controls['password'].errors?.['minLength']) {
+                    <span class="validator"  style="margin-top: 0cm;"> min lenght 3!</span>
+                  }
+                  @if (loginForm.controls['password'].errors?.['required']) {
+                    <span class="validator" style="margin-top: 0cm;">required field!</span>
+                  }
+                }
+                
+              
+              <button type="submit" (click)="onLogIn()">Login</button>
+            </form>
+           
+            <!-- <p>Don't have an account? <a [routerLink]="['/register']">Sign up</a></p> -->
+            <p>Don't have an account?  >  <span (click)="onRegisterClick()"> Sign up</span></p>
+ </div>
+   

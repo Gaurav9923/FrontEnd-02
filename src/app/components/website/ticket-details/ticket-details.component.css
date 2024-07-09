@@ -1,0 +1,91 @@
+.ticket-details-container {
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .ticket-details-header {
+    background-color: #f7f7f7;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .ticket-details-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .ticket-details-content {
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .ticket-details-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .ticket-details-col {
+    flex-basis: calc(50% - 10px);
+  }
+  
+  .ticket-details-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  .ticket-details-value {
+    color: #333;
+  }
+ 
+  .invoice-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .customer-info {
+    margin-top: 20px;
+  }
+  
+  .seat-info {
+    margin-top: 20px;
+  }
+  
+  .seat-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .seat-info li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .seat-info li:last-child {
+    border-bottom: none;
+  }
+  
+  .total {
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }

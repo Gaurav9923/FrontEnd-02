@@ -1,0 +1,15 @@
+<div class="dialog">
+    <h2>Confirmation</h2>
+    <p>You have selected <span class="count">{{data.seatSelectedArray.length}} seats -[{{data.seatSelectedArray}}]</span>of number  for the price of <span class="total">{{data.seatSelectedArray.length *200 }}Rs</span></p>
+   
+    <div>
+        <span style="text-align: start;">
+            
+            <button class="cancel" (click)="closeDialog()">Cancel</button>
+        </span>
+        <span style="text-align: end;">
+
+            <button class="confirm" (click)="confirmBooking()">Confirm</button>
+        </span>
+    </div>
+  </div>

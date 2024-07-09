@@ -1,0 +1,63 @@
+<!-- <p>theater-screen works!</p> -->
+<div class="App">
+  <div class="Movies" style="color: white">
+    <!--MovieName  -->
+    <label>{{data.screenObj.movieFk.movieName}}</label>
+    <!-- {/* <label >{movies.name} </label> */} -->
+
+    <!-- showcase -->
+    <div>
+      <ul class="ShowCase">
+        <li>
+          <span class="seat"></span>
+          <small>N/A</small>
+        </li>
+        <li><span class="seat selected"></span> <small>Selected</small></li>
+        <li><span class="seat occupied"></span> <small>Occupied</small></li>
+      </ul>
+    </div>
+
+    <!--Cinema  -->
+    <div>
+      <div class="Cinema">
+        <div class="screen"></div>
+        <!-- @for (seat of seats; track $index) {
+            
+            <span
+            *ngFor="let seat of seats; let i = index"
+            [class]="getClass(seat, i)"
+            tabindex="0"
+            (click)="handleSelectedState(seat)"
+            (keydown.enter)="handleSelectedState(seat)"
+          ></span>
+
+          } -->
+
+        <div *ngFor="let row of seats; let rowIndex = index" class="seats">
+          <div
+            *ngFor="let seat of row; let seatIndex = index"
+            class="seat"
+            [ngClass]="{ 'selected': seat.selected, 'occupied': seat.occupied }"
+            (click)="toggleSeat(rowIndex,seatIndex)"
+          >
+          <!-- {{ seat.number }} -->
+          </div>
+
+          <!-- <div class="seats"></div> -->
+        </div>
+      </div>
+      <div>
+        <p class="info" style="color: white">
+          You have selected <span className="count" [textContent]="seatSelected.length" ></span>
+          seats for the price of
+          <span className="total" [textContent]="'Rs.'+(seatSelected.length * 200)">
+           
+          </span>
+        </p>
+      </div>
+      <Button  class="btn btn-outline-primary"  variant="outlined" (click)="openConfirmationDialogue()"
+        >CONFIRM</Button
+      >
+    </div>
+  </div>
+</div>
